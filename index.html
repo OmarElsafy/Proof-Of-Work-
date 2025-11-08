@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Omar El Safy | Portfolio</title>
     
-    <meta name="description" content="Omar - Crypto researcher and content strategist. 4 years building research, marketing, and growth strategies.">
+    <meta name="description" content="Omar El Safy - Crypto researcher and content strategist. 4 years building research, marketing, and growth strategies.">
     <meta name="author" content="Omar El Safy">
     
     <meta property="og:title" content="Omar El Safy">
@@ -115,15 +115,16 @@
         /* Navigation Tabs */
         .tabs {
             display: flex;
-            gap: 32px;
+            gap: 24px;
             justify-content: center;
             margin-bottom: 60px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 16px;
+            flex-wrap: wrap;
         }
         
         .tab {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.05em;
@@ -258,6 +259,23 @@
             color: var(--text-muted);
         }
         
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+        
+        .empty-state-title {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .empty-state-text {
+            font-size: 14px;
+        }
+        
         /* Footer */
         .footer {
             margin-top: 100px;
@@ -276,6 +294,7 @@
             display: flex;
             gap: 24px;
             justify-content: center;
+            flex-wrap: wrap;
         }
         
         .footer-links a {
@@ -316,8 +335,12 @@
             }
             
             .tabs {
-                gap: 20px;
+                gap: 16px;
                 overflow-x: auto;
+            }
+            
+            .tab {
+                font-size: 12px;
             }
             
             .clients-grid {
@@ -342,8 +365,9 @@
     <nav class="tabs">
         <div class="tab active" onclick="showSection('clients')">CLIENTS</div>
         <div class="tab" onclick="showSection('research')">RESEARCH</div>
-        <div class="tab" onclick="showSection('content')">CONTENT</div>
-        <div class="tab" onclick="showSection('writing')">WRITING</div>
+        <div class="tab" onclick="showSection('video')">VIDEO</div>
+        <div class="tab" onclick="showSection('campaigns')">CAMPAIGNS</div>
+        <div class="tab" onclick="showSection('x')">X</div>
     </nav>
     
     <!-- Clients Section -->
@@ -399,15 +423,19 @@
         </div>
     </section>
     
-    <!-- Research Section -->
+    <!-- Research Section (Combined Research + Content) -->
     <section id="research" class="section">
         <div class="work-list">
             <div class="year-group">
-                <div class="year-label">2025</div>
+                <div class="year-label">2025 — Reports</div>
                 <div class="work-item">
                     <div class="work-title"><a href="https://docs.google.com/presentation/d/1Atzk4YUcfBWTh3AtuNgEi99TSnSKZWYFJ9hRBr_MUfw/edit?usp=sharing" target="_blank">Prediction Markets Report</a></div>
                     <div class="work-desc">60-page analysis of prediction markets landscape and protocols</div>
                 </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2025 — Research</div>
                 <div class="work-item">
                     <div class="work-title"><a href="https://a1research.io/blog/the-state-of-the-clob-wars" target="_blank">The State of the CLOB Wars</a></div>
                     <div class="work-desc">Analysis of central limit order book exchanges</div>
@@ -419,6 +447,30 @@
                 <div class="work-item">
                     <div class="work-title"><a href="https://app.t2.world/article/cm4pvuju61063552tbmctj5ouujp" target="_blank">Proof-Of-Knowledge</a></div>
                     <div class="work-desc">Analysis of knowledge verification systems</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/Ommiii_/status/1952390929362374877" target="_blank">Brand Identity & Personal Identity</a></div>
+                    <div class="work-desc">Building personal identity like successful brands</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1915751291671679388" target="_blank">Knowledge Network</a></div>
+                    <div class="work-desc">Context for attributed research</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2024 — Quai Network</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://qu.ai/blog/proof-of-work-innovation-workshares/" target="_blank">Proof of Work Innovation: WorkShares</a></div>
+                    <div class="work-desc">Technical explainer on proof-of-work mechanism</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://qu.ai/blog/a-new-era-of-stablecoin-qi-the-energy-dollar/" target="_blank">Qi: The Energy Dollar</a></div>
+                    <div class="work-desc">Analysis of energy-backed stablecoin innovation</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://qu.ai/blog/quai-network-built-for-everyone/" target="_blank">Quai Network: Built for Everyone</a></div>
+                    <div class="work-desc">Exploring accessibility in blockchain infrastructure</div>
                 </div>
             </div>
             
@@ -435,84 +487,14 @@
             </div>
             
             <div class="year-group">
-                <div class="year-label">2022</div>
+                <div class="year-label">2022 — Reports</div>
                 <div class="work-item">
-                    <div class="work-title"><a href="https://drive.google.com/file/d/1HwO6mrV1HnZ1avvxc1v1vvVYhT931f4F/view?usp=sharing" target="_blank">Ethereum Case Study</a></div>
+                    <div class="work-title"><a href="https://drive.google.com/file/d/1HwO6mrV1HnZ1avvxc1v1vvVYhT931f4F/view?usp=sharing" target="_blank">Ethereum Report</a></div>
                     <div class="work-desc">Comprehensive ecosystem and market analysis</div>
                 </div>
                 <div class="work-item">
                     <div class="work-title"><a href="https://drive.google.com/file/d/1tJD0ZLgB9W7H4xABgyH-xdNi5eBAQn7T/view?usp=sharing" target="_blank">Mina L1 Report</a></div>
                     <div class="work-desc">Deep dive into zero-knowledge infrastructure</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Content Section -->
-    <section id="content" class="section">
-        <div class="work-list">
-            <div class="year-group">
-                <div class="year-label">2024 — Quai Network</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://qu.ai/blog/proof-of-work-innovation-workshares/" target="_blank">Proof of Work Innovation: WorkShares</a></div>
-                    <div class="work-desc">Technical explainer on proof-of-work mechanism</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://qu.ai/blog/a-new-era-of-stablecoin-qi-the-energy-dollar/" target="_blank">Qi: The Energy Dollar</a></div>
-                    <div class="work-desc">Analysis of energy-backed stablecoin innovation</div>
-                </div>
-            </div>
-            
-            <div class="year-group">
-                <div class="year-label">2024 — Wormhole</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/wormhole/status/1837032175121879161" target="_blank">Multichain Tokenized Assets</a></div>
-                    <div class="work-desc">Partnership announcement with Securitize</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/wormhole/status/1806726933511606298" target="_blank">Governor V2 Launch</a></div>
-                    <div class="work-desc">Flow canceling mechanism explainer</div>
-                </div>
-            </div>
-            
-            <div class="year-group">
-                <div class="year-label">2024 — Space and Time</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/SpaceandTimeDB/status/1842233351790624773" target="_blank">Designing Token Economies</a></div>
-                    <div class="work-desc">Educational thread on tokenomics templates</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/SpaceandTimeDB/status/1838994391660442033" target="_blank">Building Onchain</a></div>
-                    <div class="work-desc">ZK coprocessor and tooling overview</div>
-                </div>
-            </div>
-            
-            <div class="year-group">
-                <div class="year-label">2022-2023 — Avalanche</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/ommiii_/status/1674881097380016128" target="_blank">Liquid Staking & Subnets</a></div>
-                    <div class="work-desc">8-thread series on GoGoPool and Benqi</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/ommiii_/status/1679904420195336192" target="_blank">Avalanche as FX Chain</a></div>
-                    <div class="work-desc">Positioning analysis and content strategy</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Writing Section -->
-    <section id="writing" class="section">
-        <div class="work-list">
-            <div class="year-group">
-                <div class="year-label">2025</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/Ommiii_/status/1952390929362374877" target="_blank">Brand Identity & Personal Identity</a></div>
-                    <div class="work-desc">Building personal identity like successful brands</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1915751291671679388" target="_blank">Knowledge Network</a></div>
-                    <div class="work-desc">Context for attributed research</div>
                 </div>
             </div>
             
@@ -542,44 +524,9 @@
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer class="footer">
-        <p class="footer-text">that's it (for now). thanks for making it this far!</p>
-        <div class="footer-links">
-            <a href="https://twitter.com/Ommiii_" target="_blank">Twitter</a>
-            <a href="https://linkedin.com/in/Omar-El-Safy" target="_blank">LinkedIn</a>
-            <a href="mailto:omarelsafyy1@gmail.com">Email</a>
-            <a href="https://calendly.com/omarelsafyy1/30min" target="_blank">Schedule a call</a>
-        </div>
-    </footer>
-    
-    <script>
-        // Tab Navigation
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Remove active from all tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Activate clicked tab
-            event.target.classList.add('active');
-        }
-        
-        // Scroll Progress
-        window.addEventListener('scroll', () => {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            document.getElementById('progressBar').style.width = scrolled + '%';
-        });
-    </script>
-</body>
-</html>
+    <!-- Video Section -->
+    <section id="video" class="section">
+        <div class="empty-state">
+            <div class="empty-state-title">Coming Soon</div>
+            <div class="empty-state-text">Video content in
+
