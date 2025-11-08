@@ -104,27 +104,484 @@
         .cta a {
             color: var(--link);
             text-decoration: none;
-            border-bottom: 1px solid var(--link);
+            border-bottom: 1px solid transparent;
             transition: border-color 0.2s;
         }
         
         .cta a:hover {
-            opacity: 0.7;
+            border-bottom-color: var(--link);
         }
         
         /* Navigation Tabs */
         .tabs {
             display: flex;
-            gap: 24px;
+            gap: 32px;
             justify-content: center;
             margin-bottom: 60px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 16px;
-            flex-wrap: wrap;
         }
         
         .tab {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.2s;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .tab:hover, .tab.active {
+            color: var(--text);
+            border-bottom-color: var(--text);
+        }
+        
+        /* Section */
+        .section {
+            display: none;
+            animation: slideUp 0.4s ease;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Clients Grid */
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .client-card {
+            padding: 20px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .client-card:hover {
+            border-color: var(--text-muted);
+            background: var(--hover);
+            transform: translateY(-2px);
+        }
+        
+        .client-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .client-desc {
             font-size: 13px;
-            font-weight:
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        
+        .client-role {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        
+        /* Work Items */
+        .work-list {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+        
+        .year-group {
+            margin-bottom: 40px;
+        }
+        
+        .year-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .work-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+        
+        .work-item:hover {
+            padding-left: 12px;
+        }
+        
+        .work-item:last-child {
+            border-bottom: none;
+        }
+        
+        .work-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .work-title a {
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        
+        .work-title a:hover {
+            color: var(--link);
+            border-bottom-color: var(--link);
+        }
+        
+        .work-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 100px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--text);
+        }
+        
+        /* Scroll Progress */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: var(--link);
+            width: 0%;
+            z-index: 1000;
+            transition: width 0.1s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            body {
+                padding: 60px 20px 100px;
+            }
+            
+            .name {
+                font-size: 24px;
+            }
+            
+            .tagline {
+                font-size: 18px;
+            }
+            
+            .tabs {
+                gap: 20px;
+                overflow-x: auto;
+            }
+            
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1 class="name">Omar El Safy</h1>
+        <p class="handle">@Ommiii_</p>
+        <h2 class="tagline">research. growth. content.</h2>
+        <p class="subtitle">I help crypto projects bridge technical depth with clear narratives. 4 years working across research, marketing, and content strategy.</p>
+        <p class="cta">Currently writing at <a href="https://nileresearch.substack.com/" target="_blank">Nile Research</a></p>
+    </header>
+    
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+        <div class="tab active" onclick="showSection('clients')">CLIENTS</div>
+        <div class="tab" onclick="showSection('research')">RESEARCH</div>
+        <div class="tab" onclick="showSection('content')">CONTENT</div>
+        <div class="tab" onclick="showSection('writing')">WRITING</div>
+    </nav>
+    
+    <!-- Clients Section -->
+    <section id="clients" class="section active">
+        <div class="clients-grid">
+            <div class="client-card">
+                <div class="client-name">Gear Protocol</div>
+                <div class="client-desc">Next-gen smart contract platform</div>
+                <div class="client-role">Freelance, 2025</div>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-name">A1 Research</div>
+                <div class="client-desc">On-chain research & analysis</div>
+                <div class="client-role">Freelance, 2025</div>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-name">DeSciWorld + Bonfires AI</div>
+                <div class="client-desc">Decentralized science infrastructure</div>
+                <div class="client-role">2024-2025</div>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-name">Wormhole</div>
+                <div class="client-desc">Cross-chain messaging protocol</div>
+                <div class="client-role">Agency, 2024</div>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-name">Ctrl Wallet</div>
+                <div class="client-desc">Multi-chain wallet (formerly XDeFi)</div>
+                <div class="client-role">Agency, 2024</div>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-name">Quai Network</div>
+                <div class="client-desc">Scalable proof-of-work blockchain</div>
+                <div class="client-role">Agency, 2024</div>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-name">Space and Time</div>
+                <div class="client-desc">ZK-powered data warehouse</div>
+                <div class="client-role">Agency, 2024</div>
+            </div>
+            
+            <div class="client-card">
+                <div class="client-name">Avalanche</div>
+                <div class="client-desc">Layer-1 blockchain platform</div>
+                <div class="client-role">2022-2023</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Research Section -->
+    <section id="research" class="section">
+        <div class="work-list">
+            <div class="year-group">
+                <div class="year-label">2025</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://docs.google.com/presentation/d/1Atzk4YUcfBWTh3AtuNgEi99TSnSKZWYFJ9hRBr_MUfw/edit?usp=sharing" target="_blank">Prediction Markets Report</a></div>
+                    <div class="work-desc">60-page analysis of prediction markets landscape and protocols</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://a1research.io/blog/the-state-of-the-clob-wars" target="_blank">The State of the CLOB Wars</a></div>
+                    <div class="work-desc">Analysis of central limit order book exchanges</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://a1research.io/blog/from-hyperliquid-to-paradex-bullet-hibachi-and-lighter-the-rise-of-clob-appchains" target="_blank">Rise of CLOB Appchains</a></div>
+                    <div class="work-desc">From Hyperliquid to Paradex, exploring appchain innovations</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://app.t2.world/article/cm4pvuju61063552tbmctj5ouujp" target="_blank">Proof-Of-Knowledge</a></div>
+                    <div class="work-desc">Analysis of knowledge verification systems</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2023</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://web3phronesis.substack.com/p/stablecoins-at-escape-velocity" target="_blank">Stablecoins at Escape Velocity</a></div>
+                    <div class="work-desc">Institutional adoption and cross-chain infrastructure</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://www.avax.network/about/blog/exploring-the-exchange-landscape-on-avalanche" target="_blank">Avalanche Exchange Landscape</a></div>
+                    <div class="work-desc">Deep dive into Avalanche's DEX ecosystem</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2022</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://drive.google.com/file/d/1HwO6mrV1HnZ1avvxc1v1vvVYhT931f4F/view?usp=sharing" target="_blank">Ethereum Case Study</a></div>
+                    <div class="work-desc">Comprehensive ecosystem and market analysis</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://drive.google.com/file/d/1tJD0ZLgB9W7H4xABgyH-xdNi5eBAQn7T/view?usp=sharing" target="_blank">Mina L1 Report</a></div>
+                    <div class="work-desc">Deep dive into zero-knowledge infrastructure</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Content Section -->
+    <section id="content" class="section">
+        <div class="work-list">
+            <div class="year-group">
+                <div class="year-label">2024 — Quai Network</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://qu.ai/blog/proof-of-work-innovation-workshares/" target="_blank">Proof of Work Innovation: WorkShares</a></div>
+                    <div class="work-desc">Technical explainer on proof-of-work mechanism</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://qu.ai/blog/a-new-era-of-stablecoin-qi-the-energy-dollar/" target="_blank">Qi: The Energy Dollar</a></div>
+                    <div class="work-desc">Analysis of energy-backed stablecoin innovation</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2024 — Wormhole</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/wormhole/status/1837032175121879161" target="_blank">Multichain Tokenized Assets</a></div>
+                    <div class="work-desc">Partnership announcement with Securitize</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/wormhole/status/1806726933511606298" target="_blank">Governor V2 Launch</a></div>
+                    <div class="work-desc">Flow canceling mechanism explainer</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2024 — Space and Time</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/SpaceandTimeDB/status/1842233351790624773" target="_blank">Designing Token Economies</a></div>
+                    <div class="work-desc">Educational thread on tokenomics templates</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/SpaceandTimeDB/status/1838994391660442033" target="_blank">Building Onchain</a></div>
+                    <div class="work-desc">ZK coprocessor and tooling overview</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2022-2023 — Avalanche</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/ommiii_/status/1674881097380016128" target="_blank">Liquid Staking & Subnets</a></div>
+                    <div class="work-desc">8-thread series on GoGoPool and Benqi</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/ommiii_/status/1679904420195336192" target="_blank">Avalanche as FX Chain</a></div>
+                    <div class="work-desc">Positioning analysis and content strategy</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Writing Section -->
+    <section id="writing" class="section">
+        <div class="work-list">
+            <div class="year-group">
+                <div class="year-label">2025</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/Ommiii_/status/1952390929362374877" target="_blank">Brand Identity & Personal Identity</a></div>
+                    <div class="work-desc">Building personal identity like successful brands</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1915751291671679388" target="_blank">Knowledge Network</a></div>
+                    <div class="work-desc">Context for attributed research</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2022</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://medium.com/coinmonks/aave-for-2022-b88599c95fcb" target="_blank">Aave Protocol Analysis</a></div>
+                    <div class="work-desc">Fundamental analysis and due diligence</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://ommiii.medium.com/klatyn-klay-the-hybrid-smart-contract-blockchain-f37ca19ddd18" target="_blank">Klaytn Deep Dive</a></div>
+                    <div class="work-desc">Hybrid blockchain architecture</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2021</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://medium.com/@ommiii/0x-nodes-yield-across-the-evm-beyond-6398a6130b5e" target="_blank">0x Nodes</a></div>
+                    <div class="work-desc">Yield across EVM and beyond</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://medium.com/@ommiii/an-intro-into-the-power-of-a-crypto-index-fa57c7a4203d" target="_blank">The Power of a Crypto Index</a></div>
+                    <div class="work-desc">Index funds and portfolio strategies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">that's it (for now). thanks for making it this far!</p>
+        <div class="footer-links">
+            <a href="https://twitter.com/Ommiii_" target="_blank">Twitter</a>
+            <a href="https://linkedin.com/in/Omar-El-Safy" target="_blank">LinkedIn</a>
+            <a href="mailto:omarelsafyy1@gmail.com">Email</a>
+            <a href="https://calendly.com/omarelsafyy1/30min" target="_blank">Schedule a call</a>
+        </div>
+    </footer>
+    
+    <script>
+        // Tab Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Activate clicked tab
+            event.target.classList.add('active');
+        }
+        
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>
 
 
