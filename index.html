@@ -49,7 +49,7 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            font-size: 16px;
+            font-size: 15px; /* reduced for overall visual balance */
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
@@ -89,7 +89,7 @@
         }
         
         .subtitle {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto 32px;
@@ -97,7 +97,7 @@
         }
         
         .cta {
-            font-size: 15px;
+            font-size: 14px;
             color: var(--text-muted);
         }
         
@@ -160,6 +160,16 @@
             }
         }
         
+        .section h2 {
+            margin-bottom: 8px;
+        }
+        .section-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            max-width: 720px;
+        }
+        
         /* Clients Grid */
         .clients-grid {
             display: grid;
@@ -199,11 +209,11 @@
             font-style: italic;
         }
         
-        /* Work Items */
+        /* Work Items (reduced sizes for cleaner visual) */
         .work-list {
             display: flex;
             flex-direction: column;
-            gap: 48px;
+            gap: 36px; /* slightly reduced */
         }
         
         .year-group {
@@ -211,18 +221,18 @@
         }
         
         .year-label {
-            font-size: 13px;
+            font-size: 12px; /* reduced */
             font-weight: 600;
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 20px;
-            padding-bottom: 8px;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+            padding-bottom: 6px;
             border-bottom: 1px solid var(--border);
         }
         
         .work-item {
-            padding: 16px 0;
+            padding: 12px 0; /* reduced */
             border-bottom: 1px solid var(--border);
             transition: all 0.2s;
         }
@@ -236,7 +246,7 @@
         }
         
         .work-title {
-            font-size: 16px;
+            font-size: 15px; /* reduced */
             font-weight: 500;
             margin-bottom: 4px;
         }
@@ -254,7 +264,7 @@
         }
         
         .work-desc {
-            font-size: 14px;
+            font-size: 13px; /* reduced */
             color: var(--text-muted);
         }
         
@@ -342,10 +352,9 @@
     <nav class="tabs">
         <div class="tab active" onclick="showSection('clients')">WHO I HAVE WORKED WITH</div>
         <div class="tab" onclick="showSection('research')">RESEARCH</div>
-        <div class="tab" onclick="showSection('content')">CONTENT</div>
+        <div class="tab" onclick="showSection('content')">CONTENT ON SOCIALS</div>
         <div class="tab" onclick="showSection('general-writing')">GENERAL WRITING</div>
         <div class="tab" onclick="showSection('video')">VIDEO</div>
-        <div class="tab" onclick="showSection('social')">SOCIAL</div>
     </nav>
     
     <!-- Clients Section -->
@@ -392,25 +401,37 @@
     
     <!-- Research Section -->
     <section id="research" class="section">
+        <h2>Research</h2>
+        <p class="section-desc">Deeper dives, reports, and technical analysis of projects, industries, and protocols.</p>
         <div class="work-list">
             <div class="year-group">
                 <div class="year-label">2025</div>
+
                 <div class="work-item">
-                    <div class="work-title"><a href="https://docs.google.com/presentation/d/1Atzk4YUcfBWTh3AtuNgEi99TSnSKZWYFJ9hRBr_MUfw/edit?usp=sharing" target="_blank">Prediction Markets Report</a>[...]
+                    <div class="work-title"><a href="https://docs.google.com/presentation/d/1Atzk4YUcfBWTh3AtuNgEi99TSnSKZWYFJ9hRBr_MUfw/edit?usp=sharing" target="_blank">Prediction Markets Report</a></div>
                     <div class="work-desc">60-page analysis of prediction markets landscape and protocols</div>
                 </div>
+
                 <div class="work-item">
                     <div class="work-title"><a href="https://a1research.io/blog/the-state-of-the-clob-wars" target="_blank">The State of the CLOB Wars</a></div>
                     <div class="work-desc">Analysis of central limit order book exchanges</div>
                 </div>
+
                 <div class="work-item">
-                    <div class="work-title"><a href="https://a1research.io/blog/from-hyperliquid-to-paradex-bullet-hibachi-and-lighter-the-rise-of-clob-appchains" target="_blank">Rise of CLOB Appchain[...]
+                    <div class="work-title"><a href="https://a1research.io/blog/from-hyperliquid-to-paradex-bullet-hibachi-and-lighter-the-rise-of-clob-appchains" target="_blank">Rise of CLOB Appchain</a></div>
                     <div class="work-desc">From Hyperliquid to Paradex, exploring appchain innovations</div>
                 </div>
+
                 <div class="work-item">
                     <div class="work-title"><a href="https://web3phronesis.substack.com/p/stablecoins-at-escape-velocity" target="_blank">Stablecoins at Escape Velocity</a></div>
                     <div class="work-desc">Institutional adoption and cross-chain infrastructure</div>
                 </div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://nileresearch.substack.com/p/getting-wet-with-humidifi" target="_blank">Getting Wet with Humidifi</a></div>
+                    <div class="work-desc">Nile Research — analysis of proportional AMMs (prop AMMs)</div>
+                </div>
+
             </div>
             
             <div class="year-group">
@@ -447,131 +468,10 @@
         </div>
     </section>
     
-    <!-- Content Section -->
+    <!-- CONTENT ON SOCIALS (merged Content + Social, duplicates removed; newest → oldest ordering preserved) -->
     <section id="content" class="section">
-        <div class="work-list">
-            
-            <div class="year-group">
-                <div class="year-label">2024 — Wormhole</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/wormhole/status/1837032175121879161" target="_blank">Multichain Tokenized Assets</a></div>
-                    <div class="work-desc">Partnership announcement with Securitize</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/wormhole/status/1806726933511606298" target="_blank">Governor V2 Launch</a></div>
-                    <div class="work-desc">Flow canceling mechanism explainer</div>
-                </div>
-            </div>
-            
-            <div class="year-group">
-                <div class="year-label">2024 — Space and Time</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/SpaceandTimeDB/status/1842233351790624773" target="_blank">Designing Token Economies</a></div>
-                    <div class="work-desc">Educational thread on tokenomics templates</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/SpaceandTimeDB/status/1838994391660442033" target="_blank">Building Onchain</a></div>
-                    <div class="work-desc">ZK coprocessor and tooling overview</div>
-                </div>
-            </div>
-            
-            <div class="year-group">
-                <div class="year-label">2022-2023 — Avalanche</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/ommiii_/status/1674881097380016128" target="_blank">Liquid Staking & Subnets</a></div>
-                    <div class="work-desc">8-thread series on GoGoPool and Benqi</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/ommiii_/status/1679904420195336192" target="_blank">Avalanche as FX Chain</a></div>
-                    <div class="work-desc">Positioning analysis and content strategy</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- General Writing Section (renamed from Writing) -->
-    <section id="general-writing" class="section">
-        <h2>General writing</h2>
-        <div class="work-list">
-            <div class="year-group">
-                <div class="year-label">2025</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/Ommiii_/status/1952390929362374877" target="_blank">Brand Identity & Personal Identity</a></div>
-                    <div class="work-desc">Building personal identity like successful brands</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1915751291671679388" target="_blank">Knowledge Network</a></div>
-                    <div class="work-desc">Context for attributed research</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://ommiii.substack.com/p/learning-ikigai-part-i" target="_blank">Learning Ikigai — Part I</a></div>
-                    <div class="work-desc">Substack post — Learning Ikigai (Part I)</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://app.t2.world/article/cm4pvuju61063552tbmctj5ouujp" target="_blank">Proof-Of-Knowledge</a></div>
-                    <div class="work-desc">Analysis of knowledge verification systems</div>
-                </div>
-            </div>
-            
-            <div class="year-group">
-                <div class="year-label">2022</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://medium.com/coinmonks/aave-for-2022-b88599c95fcb" target="_blank">Aave Protocol Analysis</a></div>
-                    <div class="work-desc">Fundamental analysis and due diligence</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://ommiii.medium.com/klatyn-klay-the-hybrid-smart-contract-blockchain-f37ca19ddd18" target="_blank">Klaytn Deep Dive</a></div>
-                    <div class="work-desc">Hybrid blockchain architecture</div>
-                </div>
-            </div>
-            
-            <div class="year-group">
-                <div class="year-label">2021</div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://medium.com/@ommiii/0x-nodes-yield-across-the-evm-beyond-6398a6130b5e" target="_blank">0x Nodes</a></div>
-                    <div class="work-desc">Yield across EVM and beyond</div>
-                </div>
-                <div class="work-item">
-                    <div class="work-title"><a href="https://medium.com/@ommiii/an-intro-into-the-power-of-a-crypto-index-fa57c7a4203d" target="_blank">The Power of a Crypto Index</a></div>
-                    <div class="work-desc">Index funds and portfolio strategies</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Video Content Section -->
-    <section id="video" class="section">
-        <h2>Video Content</h2>
-        <div class="work-list">
-            <div class="year-group">
-                <div class="year-label">Short-Form Educational Videos (DeSciWorld)</div>
-
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1888608984065585589" target="_blank">Video 1 — ETH Oxford Hackathon: Deploying 100 AI Agents with Proof of Knowledge</a></div>
-                    <div class="work-desc">Short-form educational coverage from ETH Oxford Hackathon on deploying AI agents and Proof of Knowledge.</div>
-                </div>
-
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1924455874271011079" target="_blank">Video 2 — Team Spotlight: Carolina's Journey as a Dolphin Conservation Biologist</a></div>
-                    <div class="work-desc">Team spotlight video — Carolina's journey, conservation work, and funding challenges.</div>
-                </div>
-
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1882179933067513867" target="_blank">Video 3 — Monetizing Your Genomic Data Securely with GenomesDAO</a></div>
-                    <div class="work-desc">Explainer on securely monetizing genomic data through GenomesDAO.</div>
-                </div>
-
-                <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1883969693985464335" target="_blank">Video 4 — The Broken System of Scientific Publishing</a></div>
-                    <div class="work-desc">Short documentary-style piece on costs and compensation issues in scientific publishing.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Social Threads & Twitter Content Section (newest → oldest) -->
-    <section id="social" class="section">
-        <h2>Twitter Threads & Social Content</h2>
+        <h2>Content on Socials</h2>
+        <p class="section-desc">Threads, short posts, memes and social commentary.</p>
         <div class="work-list">
 
             <div class="year-group">
@@ -646,6 +546,98 @@
                 </div>
             </div>
 
+        </div>
+    </section>
+    
+    <!-- General Writing Section (renamed from Writing) -->
+    <section id="general-writing" class="section">
+        <h2>General writing</h2>
+        <p class="section-desc">Non-analytical writing exploring personal thoughts, cultural observations, and long-form essays.</p>
+        <div class="work-list">
+            <div class="year-group">
+                <div class="year-label">2025</div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/Ommiii_/status/1952390929362374877" target="_blank">Brand Identity & Personal Identity</a></div>
+                    <div class="work-desc">Building personal identity like successful brands</div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1915751291671679388" target="_blank">Knowledge Network</a></div>
+                    <div class="work-desc">Context for attributed research</div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://ommiii.substack.com/p/learning-ikigai-part-i" target="_blank">Learning Ikigai — Part I</a></div>
+                    <div class="work-desc">Substack post — Learning Ikigai (Part I)</div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://app.t2.world/article/cm4pvuju61063552tbmctj5ouujp" target="_blank">Proof-Of-Knowledge</a></div>
+                    <div class="work-desc">Analysis of knowledge verification systems</div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://nileresearch.substack.com/p/a-normative-turn-in-our-world" target="_blank">A Normative Turn in Our World</a></div>
+                    <div class="work-desc">Nile Research — normative frameworks and cultural shifts</div>
+                </div>
+
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2022</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://medium.com/coinmonks/aave-for-2022-b88599c95fcb" target="_blank">Aave Protocol Analysis</a></div>
+                    <div class="work-desc">Fundamental analysis and due diligence</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://ommiii.medium.com/klatyn-klay-the-hybrid-smart-contract-blockchain-f37ca19ddd18" target="_blank">Klaytn Deep Dive</a></div>
+                    <div class="work-desc">Hybrid blockchain architecture</div>
+                </div>
+            </div>
+            
+            <div class="year-group">
+                <div class="year-label">2021</div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://medium.com/@ommiii/0x-nodes-yield-across-the-evm-beyond-6398a6130b5e" target="_blank">0x Nodes</a></div>
+                    <div class="work-desc">Yield across EVM and beyond</div>
+                </div>
+                <div class="work-item">
+                    <div class="work-title"><a href="https://medium.com/@ommiii/an-intro-into-the-power-of-a-crypto-index-fa57c7a4203d" target="_blank">The Power of a Crypto Index</a></div>
+                    <div class="work-desc">Index funds and portfolio strategies</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Video Content Section -->
+    <section id="video" class="section">
+        <h2>Video Content</h2>
+        <p class="section-desc">Short-form and long-form video content I produced.</p>
+        <div class="work-list">
+            <div class="year-group">
+                <div class="year-label">Short-Form Educational Videos (DeSciWorld)</div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1888608984065585589" target="_blank">Video 1 — ETH Oxford Hackathon: Deploying 100 AI Agents with Proof of Knowledge</a></div>
+                    <div class="work-desc">Short-form educational coverage from ETH Oxford Hackathon on deploying AI agents and Proof of Knowledge.</div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1924455874271011079" target="_blank">Video 2 — Team Spotlight: Carolina's Journey as a Dolphin Conservation Biologist</a></div>
+                    <div class="work-desc">Team spotlight video — Carolina's journey, conservation work, and funding challenges.</div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1882179933067513867" target="_blank">Video 3 — Monetizing Your Genomic Data Securely with GenomesDAO</a></div>
+                    <div class="work-desc">Explainer on securely monetizing genomic data through GenomesDAO.</div>
+                </div>
+
+                <div class="work-item">
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1883969693985464335" target="_blank">Video 4 — The Broken System of Scientific Publishing</a></div>
+                    <div class="work-desc">Short documentary-style piece on costs and compensation issues in scientific publishing.</div>
+                </div>
+            </div>
         </div>
     </section>
     
