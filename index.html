@@ -355,6 +355,7 @@
         <div class="tab" onclick="showSection('content')">CONTENT ON SOCIALS</div>
         <div class="tab" onclick="showSection('general-writing')">GENERAL WRITING</div>
         <div class="tab" onclick="showSection('video')">VIDEO</div>
+        <div class="tab" onclick="showSection('dashboards')">DASHBOARDS</div>
     </nav>
     
     <!-- Clients Section -->
@@ -408,7 +409,7 @@
                 <div class="year-label">2025</div>
 
                 <div class="work-item">
-                    <div class="work-title"><a href="https://docs.google.com/presentation/d/1Atzk4YUcfBWTh3AtuNgEi99TSnSKZWYFJ9hRBr_MUfw/edit?usp=sharing" target="_blank">Prediction Markets Report</a></div>
+                    <div class="work-title"><a href="https://docs.google.com/presentation/d/1Atzk4YUcfBWTh3AtuNgEi99TSnSKZWYFJ9hRBr_MUfw/edit?usp=sharing" target="_blank">Prediction Markets Report</a>[...]
                     <div class="work-desc">60-page analysis of prediction markets landscape and protocols</div>
                 </div>
 
@@ -418,7 +419,7 @@
                 </div>
 
                 <div class="work-item">
-                    <div class="work-title"><a href="https://a1research.io/blog/from-hyperliquid-to-paradex-bullet-hibachi-and-lighter-the-rise-of-clob-appchains" target="_blank">Rise of CLOB Appchain</a></div>
+                    <div class="work-title"><a href="https://a1research.io/blog/from-hyperliquid-to-paradex-bullet-hibachi-and-lighter-the-rise-of-clob-appchains" target="_blank">Rise of CLOB Appchain[...]
                     <div class="work-desc">From Hyperliquid to Paradex, exploring appchains </div>
                 </div>
 
@@ -616,12 +617,12 @@
                 <div class="year-label">Short-Form Educational Videos (DeSciWorld)</div>
 
                 <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1888608984065585589" target="_blank">Video 1 — ETH Oxford Hackathon: Deploying 100 AI Agents with Proof of Knowledge</a></div>
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1888608984065585589" target="_blank">Video 1 — ETH Oxford Hackathon: Deploying 100 AI Agents with Proof of Knowle[...]
                     <div class="work-desc">Short-form educational coverage from ETH Oxford Hackathon on deploying AI agents and Proof of Knowledge.</div>
                 </div>
 
                 <div class="work-item">
-                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1924455874271011079" target="_blank">Video 2 — Team Spotlight: Carolina's Journey as a Dolphin Conservation Biologist</a></div>
+                    <div class="work-title"><a href="https://x.com/DeSciWorld/status/1924455874271011079" target="_blank">Video 2 — Team Spotlight: Carolina's Journey as a Dolphin Conservation Biolo[...]
                     <div class="work-desc">Team spotlight video — Carolina's journey, conservation work, and funding challenges.</div>
                 </div>
 
@@ -633,6 +634,20 @@
                 <div class="work-item">
                     <div class="work-title"><a href="https://x.com/DeSciWorld/status/1883969693985464335" target="_blank">Video 4 — The Broken System of Scientific Publishing</a></div>
                     <div class="work-desc">Short documentary-style piece on costs and compensation issues in scientific publishing.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboards Section -->
+    <section id="dashboards" class="section">
+        <h2>Dashboards</h2>
+        <p class="section-desc">Interactive dashboards and analytics. Primary dashboard: <a href="https://dune.com/Ommiii/microbes-nfts" target="_blank">Microbes NFTs — Dune</a></p>
+        <div class="work-list">
+            <div class="year-group">
+                <div class="work-item">
+                    <div class="work-title"><a href="https://dune.com/Ommiii/microbes-nfts" target="_blank">Microbes NFTs (Dune)</a></div>
+                    <div class="work-desc">Live Dune dashboard tracking Microbes NFT activity and metrics.</div>
                 </div>
             </div>
         </div>
@@ -659,7 +674,10 @@
                 tab.classList.remove('active');
             });
             document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
+            // `event` is used here to set the clicked tab active in the same way as before.
+            if (typeof event !== 'undefined' && event.target) {
+                event.target.classList.add('active');
+            }
         }
         
         window.addEventListener('scroll', () => {
