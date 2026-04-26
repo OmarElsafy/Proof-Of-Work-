@@ -280,45 +280,98 @@
             font-size: 1.1rem;
         }
 
-        /* ── Client Cards ── */
-        .clients-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: var(--spacing-lg);
+        /* ── Experience Timeline (horizontal) ── */
+        .timeline {
+            position: relative;
+            display: flex;
+            gap: 2rem;
+            margin: var(--spacing-md) 0 var(--spacing-lg);
+            padding: 2.5rem 0.25rem 1rem;
+            overflow-x: auto;
+            scroll-snap-type: x proximity;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(10, 28, 219, 0.3) transparent;
         }
 
-        .client-card {
-            padding: 1.5rem;
-            border: 1px solid var(--color-ink-light);
-            transition: all 0.3s ease;
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 2.5rem;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--color-ink);
         }
 
-        .client-card:hover {
-            border-color: var(--color-ink);
-            background: var(--color-ink-faint);
-            transform: translateY(-2px);
+        .timeline::-webkit-scrollbar {
+            height: 4px;
+        }
+        .timeline::-webkit-scrollbar-thumb {
+            background: rgba(10, 28, 219, 0.3);
+            border-radius: 2px;
+        }
+        .timeline::-webkit-scrollbar-thumb:hover {
+            background: var(--color-ink);
         }
 
-        .client-name {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-            line-height: 1.2;
+        .timeline-item {
+            position: relative;
+            flex: 0 0 220px;
+            padding-top: 1.75rem;
+            scroll-snap-align: start;
         }
 
-        .client-desc {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: -0.25rem;
+            left: 0;
+            width: 9px;
+            height: 9px;
+            background: var(--color-bg);
+            border: 1px solid var(--color-ink);
+            border-radius: 50%;
+            transition: background 0.3s ease;
         }
 
-        .client-role {
-            font-size: 0.8rem;
+        .timeline-item:hover::before {
+            background: var(--color-ink);
+        }
+
+        .timeline-year {
+            font-family: var(--font-sans);
             font-style: italic;
             font-weight: 300;
-            opacity: 0.6;
+            font-size: 0.85rem;
+            opacity: 0.65;
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.02em;
+        }
+
+        .timeline-name {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 0.35rem;
+            line-height: 1.4;
+        }
+
+        .timeline-role {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.55;
+            letter-spacing: 0.02em;
         }
 
         /* ── Section Descriptions ── */
@@ -417,6 +470,9 @@
         }
 
         @media (max-width: 600px) {
+            body {
+                padding: 4vw 5vw;
+            }
             header {
                 flex-direction: column;
                 gap: 1rem;
@@ -441,8 +497,66 @@
                 flex-direction: column;
                 gap: 1.5rem;
             }
-            .clients-grid {
-                grid-template-columns: 1fr;
+
+            /* Timeline goes vertical on mobile */
+            .timeline {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                overflow-x: visible;
+                padding: 0 0 0 2rem;
+                margin: var(--spacing-md) 0 var(--spacing-lg);
+            }
+            .timeline::before {
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: auto;
+                width: 1px;
+                height: auto;
+            }
+            .timeline-item {
+                flex: 1 1 auto;
+                width: 100%;
+                padding: 0 0 1.75rem 0;
+                position: relative;
+            }
+            .timeline-item:last-child {
+                padding-bottom: 0;
+            }
+            .timeline-item::before {
+                top: 0.45rem;
+                left: -2.4rem;
+            }
+            .timeline-name {
+                font-size: 1.35rem;
+            }
+
+            /* Headings & lists scale down */
+            .item-title {
+                font-size: clamp(1.5rem, 7vw, 2.25rem) !important;
+                letter-spacing: -0.03em;
+            }
+            .module-header {
+                font-size: 0.9rem;
+            }
+            .section-desc {
+                font-size: 0.9rem;
+            }
+            .list-item {
+                padding-bottom: 0.5rem;
+                margin-bottom: 1rem;
+            }
+            .list-item:hover {
+                padding-left: 0.5rem;
+            }
+
+            /* Sidebar links/cards spacing */
+            .sidebar-section-title {
+                font-size: 0.9rem;
+            }
+            .sidebar-item {
+                margin-bottom: 1rem;
             }
         }
     </style>
@@ -456,7 +570,7 @@
         <nav class="text-upper-spaced">
             <a href="#" class="active" onclick="showSection('clients', this)">experience</a>
             <a href="#" onclick="showSection('research', this)">research</a>
-            <a href="#" onclick="showSection('content', this)">content</a>
+            <a href="#" onclick="showSection('content', this)">threads / x posts</a>
             <a href="#" onclick="showSection('general-writing', this)">writing</a>
             <a href="#" onclick="showSection('video', this)">video</a>
             <a href="#" onclick="showSection('dashboards', this)">dashboards</a>
@@ -495,51 +609,60 @@
             <section id="clients" class="section active">
                 <div class="module">
                     <span class="module-header text-italic-light">who I have worked for</span>
-                    <div class="clients-grid">
-                        <div class="client-card">
-                            <div class="client-name">Messari</div>
-                            <div class="client-desc">Crypto research & intelligence</div>
-                            <div class="client-role">2025</div>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2026</div>
+                            <div class="timeline-name">ChainGPT</div>
+                            <div class="timeline-desc">AI-powered Web3 infrastructure</div>
                         </div>
-                        <div class="client-card">
-                            <div class="client-name">A1 Research</div>
-                            <div class="client-desc">On-chain research & analysis</div>
-                            <div class="client-role">Freelance, 2025</div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025</div>
+                            <div class="timeline-name">A1 Research</div>
+                            <div class="timeline-desc">On-chain research & analysis</div>
+                            <span class="timeline-role">Freelance</span>
                         </div>
-                        <div class="client-card">
-                            <div class="client-name">ChainGPT</div>
-                            <div class="client-desc">AI-powered Web3 infrastructure</div>
-                            <div class="client-role">2025</div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2025</div>
+                            <div class="timeline-name">Sporting Crypto</div>
+                            <div class="timeline-desc">Sports & crypto media platform</div>
                         </div>
-                        <div class="client-card">
-                            <div class="client-name">DeSciWorld + Bonfires AI</div>
-                            <div class="client-desc">Decentralized science infrastructure</div>
-                            <div class="client-role">2024–2025</div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024–2025</div>
+                            <div class="timeline-name">DeSciWorld + Bonfires AI</div>
+                            <div class="timeline-desc">Decentralized science infrastructure</div>
                         </div>
-                        <div class="client-card">
-                            <div class="client-name">Wormhole</div>
-                            <div class="client-desc">Cross-chain messaging protocol</div>
-                            <div class="client-role">Agency, 2024</div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-name">Wormhole</div>
+                            <div class="timeline-desc">Cross-chain messaging protocol</div>
+                            <span class="timeline-role">via Scrib3</span>
                         </div>
-                        <div class="client-card">
-                            <div class="client-name">Ctrl Wallet</div>
-                            <div class="client-desc">Multi-chain wallet (formerly XDeFi)</div>
-                            <div class="client-role">Agency, 2024</div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-name">Ctrl Wallet</div>
+                            <div class="timeline-desc">Multi-chain wallet (formerly XDeFi)</div>
+                            <span class="timeline-role">via Scrib3</span>
                         </div>
-                        <div class="client-card">
-                            <div class="client-name">Space and Time</div>
-                            <div class="client-desc">ZK-powered data warehouse</div>
-                            <div class="client-role">Agency, 2024</div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2024</div>
+                            <div class="timeline-name">Space and Time</div>
+                            <div class="timeline-desc">ZK-powered data warehouse</div>
+                            <span class="timeline-role">via Scrib3</span>
                         </div>
-                        <div class="client-card">
-                            <div class="client-name">Sporting Crypto</div>
-                            <div class="client-desc">Sports & crypto media platform</div>
-                            <div class="client-role">2025</div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2022–2023</div>
+                            <div class="timeline-name">Avalanche</div>
+                            <div class="timeline-desc">Layer-1 blockchain platform</div>
                         </div>
-                        <div class="client-card">
-                            <div class="client-name">Avalanche</div>
-                            <div class="client-desc">Layer-1 blockchain platform</div>
-                            <div class="client-role">2022–2023</div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2021</div>
+                            <div class="timeline-name">Messari</div>
+                            <div class="timeline-desc">Crypto research & intelligence</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-year">2021</div>
+                            <div class="timeline-name">Swiss Blockchain Boutique</div>
+                            <div class="timeline-desc">Family office</div>
                         </div>
                     </div>
                 </div>
@@ -548,6 +671,17 @@
             <!-- Research Section -->
             <section id="research" class="section">
                 <p class="section-desc">Deeper dives, reports, and technical analysis of projects, industries, and protocols.</p>
+
+                <div class="module">
+                    <span class="module-header text-italic-light">2026</span>
+                    <a href="https://docsend.com/v/3qbzz/predicted" target="_blank" class="list-item item-featured">
+                        <span class="item-title">prediction market q1 2026 report</span>
+                        <span class="item-meta">
+                            <span class="meta-tag">report</span>
+                            <span class="meta-value text-italic-light">DocSend</span>
+                        </span>
+                    </a>
+                </div>
 
                 <div class="module">
                     <span class="module-header text-italic-light">2025</span>
@@ -758,39 +892,43 @@
 
                 <div class="module">
                     <span class="module-header text-italic-light">2025</span>
+                    <a href="https://nileresearch.substack.com/p/a-normative-turn-in-our-world" target="_blank" class="list-item">
+                        <span class="item-title">a normative turn in our world</span>
+                        <span class="item-meta">
+                            <span class="meta-tag">Nile Research</span>
+                            <span class="meta-value text-italic-light">Nov 2025</span>
+                        </span>
+                    </a>
                     <a href="https://x.com/Ommiii_/status/1952390929362374877" target="_blank" class="list-item">
                         <span class="item-title">brand identity & personal identity</span>
                         <span class="item-meta">
-                            <span class="meta-tag">essay</span>
-                            <span class="meta-value text-italic-light">X</span>
+                            <span class="meta-tag">X</span>
+                            <span class="meta-value text-italic-light">Aug 2025</span>
                         </span>
                     </a>
                     <a href="https://x.com/DeSciWorld/status/1915751291671679388" target="_blank" class="list-item">
                         <span class="item-title">knowledge network</span>
                         <span class="item-meta">
-                            <span class="meta-tag">thread</span>
-                            <span class="meta-value text-italic-light">DeSciWorld</span>
+                            <span class="meta-tag">DeSciWorld</span>
+                            <span class="meta-value text-italic-light">Apr 2025</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="module">
+                    <span class="module-header text-italic-light">2024</span>
+                    <a href="https://app.t2.world/article/cm4pvuju61063552tbmctj5ouujp" target="_blank" class="list-item">
+                        <span class="item-title">proof-of-knowledge</span>
+                        <span class="item-meta">
+                            <span class="meta-tag">T2</span>
+                            <span class="meta-value text-italic-light">Dec 2024</span>
                         </span>
                     </a>
                     <a href="https://ommiii.substack.com/p/learning-ikigai-part-i" target="_blank" class="list-item">
                         <span class="item-title">learning ikigai — part i</span>
                         <span class="item-meta">
-                            <span class="meta-tag">essay</span>
-                            <span class="meta-value text-italic-light">Substack</span>
-                        </span>
-                    </a>
-                    <a href="https://app.t2.world/article/cm4pvuju61063552tbmctj5ouujp" target="_blank" class="list-item">
-                        <span class="item-title">proof-of-knowledge</span>
-                        <span class="item-meta">
-                            <span class="meta-tag">analysis</span>
-                            <span class="meta-value text-italic-light">T2</span>
-                        </span>
-                    </a>
-                    <a href="https://nileresearch.substack.com/p/a-normative-turn-in-our-world" target="_blank" class="list-item">
-                        <span class="item-title">a normative turn in our world</span>
-                        <span class="item-meta">
-                            <span class="meta-tag">essay</span>
-                            <span class="meta-value text-italic-light">Nile Research</span>
+                            <span class="meta-tag">Substack</span>
+                            <span class="meta-value text-italic-light">2024</span>
                         </span>
                     </a>
                 </div>
@@ -838,14 +976,43 @@
                 <p class="section-desc">Interactive dashboards and analytics built on Dune.</p>
 
                 <div class="module">
-                    <span class="module-header text-italic-light">dune analytics</span>
-                    <a href="https://dune.com/Ommiii/microbes-nfts" target="_blank" class="list-item">
-                        <span class="item-title">microbes nfts</span>
+                    <span class="module-header text-italic-light">2026</span>
+                    <a href="https://dune.com/Ommiii/prediction-markets-by-category-volume" target="_blank" class="list-item">
+                        <span class="item-title">prediction market category dashboard</span>
                         <span class="item-meta">
                             <span class="meta-tag">live</span>
                             <span class="meta-value text-italic-light">Dune</span>
                         </span>
                     </a>
+                    <a href="https://dune.com/Ommiii/prediction-market-cross-market-retention-dashboard" target="_blank" class="list-item">
+                        <span class="item-title">prediction market user retention</span>
+                        <span class="item-meta">
+                            <span class="meta-tag">live</span>
+                            <span class="meta-value text-italic-light">Dune</span>
+                        </span>
+                    </a>
+                    <a href="https://dune.com/Ommiii/polymarket-sports-dashboard" target="_blank" class="list-item">
+                        <span class="item-title">polymarket sports dashboard</span>
+                        <span class="item-meta">
+                            <span class="meta-tag">live</span>
+                            <span class="meta-value text-italic-light">Dune</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="module">
+                    <span class="module-header text-italic-light">2025</span>
+                    <a href="https://dune.com/Ommiii/hyperevm-analysis" target="_blank" class="list-item">
+                        <span class="item-title">hyperevm analysis</span>
+                        <span class="item-meta">
+                            <span class="meta-tag">live</span>
+                            <span class="meta-value text-italic-light">Dune</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="module">
+                    <span class="module-header text-italic-light">2024</span>
                     <a href="https://dune.com/Ommiii/2024-presidential-election-polymarket" target="_blank" class="list-item">
                         <span class="item-title">2024 presidential election polymarket</span>
                         <span class="item-meta">
@@ -853,8 +1020,12 @@
                             <span class="meta-value text-italic-light">Dune</span>
                         </span>
                     </a>
-                    <a href="https://dune.com/Ommiii/hyperevm-analysis" target="_blank" class="list-item">
-                        <span class="item-title">hyperevm analysis</span>
+                </div>
+
+                <div class="module">
+                    <span class="module-header text-italic-light">2023</span>
+                    <a href="https://dune.com/Ommiii/microbes-nfts" target="_blank" class="list-item">
+                        <span class="item-title">microbes nfts</span>
                         <span class="item-meta">
                             <span class="meta-tag">live</span>
                             <span class="meta-value text-italic-light">Dune</span>
@@ -929,7 +1100,6 @@
                     }
                 });
 
-                // Sort by date (newest first) and take top 5
                 allPosts.sort((a, b) => b.date - a.date);
                 const latest = allPosts.slice(0, 5);
 
@@ -973,7 +1143,6 @@
             return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
         }
 
-        // Load feed on page load
         fetchSubstackFeed();
     </script>
 </body>
