@@ -280,6 +280,78 @@
             font-size: 1.1rem;
         }
 
+        /* ── Sidebar role ── */
+        .sidebar-role {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: 0.5rem 0 1rem;
+            line-height: 1.35;
+            color: var(--color-ink);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .sidebar-role:hover {
+            opacity: 0.72;
+        }
+
+        .sidebar-role .timeline-logo {
+            width: 36px;
+            height: 36px;
+            padding: 6px;
+            flex: 0 0 auto;
+        }
+
+        /* ── Project Cards ── */
+        .project-item {
+            display: block;
+            text-decoration: none;
+            color: var(--color-ink);
+            border-bottom: 1px solid var(--color-ink);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            transition: padding-left 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.4s ease;
+        }
+
+        .project-item:hover {
+            padding-left: 1rem;
+            background-color: var(--color-ink-faint);
+        }
+
+        .project-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+        }
+
+        .project-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.75rem, 3vw, 2.75rem);
+            font-weight: 400;
+            text-transform: lowercase;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+        }
+
+        .project-status {
+            white-space: nowrap;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .project-desc {
+            font-size: 0.95rem;
+            opacity: 0.78;
+            margin-top: 0.5rem;
+            max-width: 640px;
+            line-height: 1.55;
+        }
+
         /* ── Experience Timeline (horizontal) ── */
         .timeline {
             position: relative;
@@ -610,6 +682,7 @@
         <nav class="text-upper-spaced">
             <a href="#" class="active" onclick="showSection('clients', this)">experience</a>
             <a href="#" onclick="showSection('research', this)">research</a>
+            <a href="#" onclick="showSection('projects', this)">projects</a>
             <a href="#" onclick="showSection('content', this)">threads / x posts</a>
             <a href="#" onclick="showSection('general-writing', this)">writing</a>
             <a href="#" onclick="showSection('video', this)">video</a>
@@ -626,11 +699,17 @@
                     <div class="sidebar-item-title">@Ommiii_</div>
                     <div class="sidebar-item-sub">research. growth. content.</div>
                 </div>
+                <a href="https://newsletter.predicted.co/" target="_blank" class="sidebar-role">
+                    <span class="timeline-logo"><img src="logos/predicted.png" alt="Predicted"></span>
+                    <span>Head of Research &amp; Data at Predicted</span>
+                </a>
                 <p style="font-size: 0.85rem; line-height: 1.6; opacity: 0.8; margin-bottom: 1.5rem;">
-                    I help crypto projects bridge technical depth with clear narratives. 4 years across research, marketing, and content strategy.
+                    Building data infrastructure for prediction markets. 4 years across research, data, and content in crypto.
                 </p>
+                <a href="https://newsletter.predicted.co/" target="_blank" class="sidebar-link text-upper-spaced">Predicted &rarr;</a>
                 <a href="https://nileresearch.substack.com/" target="_blank" class="sidebar-link text-upper-spaced">Nile Research &rarr;</a>
                 <a href="https://crosspollinate.substack.com/" target="_blank" class="sidebar-link text-upper-spaced">Cross Pollinate &rarr;</a>
+                <a href="https://github.com/OmarElsafy" target="_blank" class="sidebar-link text-upper-spaced">GitHub &rarr;</a>
             </div>
             <div id="substack-sidebar">
                 <div class="sidebar-section-title text-italic-light">latest from substack</div>
@@ -650,6 +729,15 @@
                 <div class="module">
                     <span class="module-header text-italic-light">who I have worked for</span>
                     <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-year">2026 — present</div>
+                            <div class="timeline-logos">
+                                <span class="timeline-logo"><img src="logos/predicted.png" alt="Predicted" loading="lazy"></span>
+                            </div>
+                            <div class="timeline-name-sm">Predicted</div>
+                            <div class="timeline-desc">The business of prediction markets</div>
+                            <span class="timeline-role">Head of Research &amp; Data</span>
+                        </div>
                         <div class="timeline-item">
                             <div class="timeline-year">2026</div>
                             <div class="timeline-logos">
@@ -747,6 +835,20 @@
                         <span class="item-meta">
                             <span class="meta-tag">report</span>
                             <span class="meta-value text-italic-light">DocSend</span>
+                        </span>
+                    </a>
+                    <a href="https://github.com/OmarElsafy/kalshi-exotics-analysis-" target="_blank" class="list-item">
+                        <span class="item-title">kalshi exotics analysis</span>
+                        <span class="item-meta">
+                            <span class="meta-tag">analysis</span>
+                            <span class="meta-value text-italic-light">GitHub</span>
+                        </span>
+                    </a>
+                    <a href="https://github.com/OmarElsafy/Q2-2026-Predicted-Report-Methodology" target="_blank" class="list-item">
+                        <span class="item-title">predicted q2 methodology</span>
+                        <span class="item-meta">
+                            <span class="meta-tag">methodology</span>
+                            <span class="meta-value text-italic-light">GitHub</span>
                         </span>
                     </a>
                 </div>
@@ -866,6 +968,22 @@
                             <span class="meta-tag">analysis</span>
                             <span class="meta-value text-italic-light">Medium</span>
                         </span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <p class="section-desc">Building the data infrastructure for prediction markets.</p>
+
+                <div class="module">
+                    <span class="module-header text-italic-light">building now</span>
+                    <a href="https://theprediction.xyz" target="_blank" class="project-item">
+                        <div class="project-head">
+                            <span class="project-title">the prediction</span>
+                            <span class="project-status text-italic-light">live &middot; theprediction.xyz</span>
+                        </div>
+                        <p class="project-desc">Data infrastructure for prediction markets — a Bloomberg-style intelligence terminal tracking venue volume, open interest, funding and category splits, with a relationship graph across the industry.</p>
                     </a>
                 </div>
             </section>
