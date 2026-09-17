@@ -352,6 +352,76 @@
             line-height: 1.55;
         }
 
+        /* ── Bookshelf (iBooks-style) ── */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+            gap: 2.25rem 1.75rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .book {
+            display: block;
+            color: var(--color-ink);
+            text-decoration: none;
+        }
+
+        .book-cover {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            border-radius: 5px;
+            overflow: hidden;
+            background: var(--color-ink-faint);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18), 0 2px 5px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+        }
+
+        /* subtle spine highlight, like a shelf render */
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.12));
+        }
+
+        .book:hover .book-cover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 34px rgba(0, 0, 0, 0.28), 0 3px 8px rgba(0, 0, 0, 0.16);
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-title {
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            line-height: 1.2;
+            margin-top: 0.65rem;
+        }
+
+        .book-author {
+            font-size: 0.8rem;
+            opacity: 0.65;
+            margin-top: 0.15rem;
+        }
+
+        @media (max-width: 640px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+                gap: 1.5rem 1rem;
+            }
+            .book-title { font-size: 0.85rem; }
+            .book-author { font-size: 0.72rem; }
+        }
+
         /* ── Experience Timeline (horizontal) ── */
         .timeline {
             position: relative;
@@ -692,6 +762,7 @@
             <a href="#" onclick="showSection('research', this)">research</a>
             <a href="#" onclick="showSection('projects', this)">projects</a>
             <a href="#" onclick="showSection('general-writing', this)">writing</a>
+            <a href="#" onclick="showSection('reading', this)">reading</a>
             <a href="#" onclick="showSection('video', this)">video</a>
             <a href="#" onclick="showSection('dashboards', this)">dashboards</a>
         </nav>
@@ -1052,6 +1123,73 @@
                             <span class="meta-value text-italic-light">2024</span>
                         </span>
                     </a>
+                </div>
+            </section>
+
+            <!-- Reading Section -->
+            <section id="reading" class="section">
+                <p class="section-desc">Books that shaped how I think about risk, markets, systems, and narrative.</p>
+                <div class="books-grid">
+                    <div class="book">
+                        <div class="book-cover"><img src="books/fooled-by-randomness.jpg" alt="Fooled by Randomness" loading="lazy"></div>
+                        <div class="book-title">Fooled by Randomness</div>
+                        <div class="book-author">Nassim Nicholas Taleb</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/black-swan.jpg" alt="The Black Swan" loading="lazy"></div>
+                        <div class="book-title">The Black Swan</div>
+                        <div class="book-author">Nassim Nicholas Taleb</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/antifragile.jpg" alt="Antifragile" loading="lazy"></div>
+                        <div class="book-title">Antifragile</div>
+                        <div class="book-author">Nassim Nicholas Taleb</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/thinking-fast-slow.jpg" alt="Thinking, Fast and Slow" loading="lazy"></div>
+                        <div class="book-title">Thinking, Fast and Slow</div>
+                        <div class="book-author">Daniel Kahneman</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/atomic-habits.jpg" alt="Atomic Habits" loading="lazy"></div>
+                        <div class="book-title">Atomic Habits</div>
+                        <div class="book-author">James Clear</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/innovators-dilemma.jpg" alt="The Innovator's Dilemma" loading="lazy"></div>
+                        <div class="book-title">The Innovator's Dilemma</div>
+                        <div class="book-author">Clayton Christensen</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/new-market-wizards.jpg" alt="The New Market Wizards" loading="lazy"></div>
+                        <div class="book-title">The New Market Wizards</div>
+                        <div class="book-author">Jack D. Schwager</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/munger.jpg" alt="Charlie Munger: The Complete Investor" loading="lazy"></div>
+                        <div class="book-title">Charlie Munger: The Complete Investor</div>
+                        <div class="book-author">Tren Griffin</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/contagious.jpg" alt="Contagious: Why Things Catch On" loading="lazy"></div>
+                        <div class="book-title">Contagious: Why Things Catch On</div>
+                        <div class="book-author">Jonah Berger</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/art-of-explanation.jpg" alt="The Art of Explanation" loading="lazy"></div>
+                        <div class="book-title">The Art of Explanation</div>
+                        <div class="book-author">Lee LeFever</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/data-and-goliath.jpg" alt="Data and Goliath" loading="lazy"></div>
+                        <div class="book-title">Data and Goliath</div>
+                        <div class="book-author">Bruce Schneier</div>
+                    </div>
+                    <div class="book">
+                        <div class="book-cover"><img src="books/palestine.jpg" alt="The Hundred Years' War on Palestine" loading="lazy"></div>
+                        <div class="book-title">The Hundred Years' War on Palestine</div>
+                        <div class="book-author">Rashid Khalidi</div>
+                    </div>
                 </div>
             </section>
 
